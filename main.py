@@ -3,8 +3,8 @@ import pandas
 from testrail import *
 
 client = APIClient(base_url="https://netskope.testrail.io/")
-client.user = "sachchidanandk@netskope.com" # Add your email
-client.password = "****" # Add your password
+client.user = "" # your testrail email address goes here
+client.password = "" # your testrail password goes here
 
 PROJECT_ID = 34
 SUITE_ID = 921
@@ -24,14 +24,16 @@ for row in df.itertuples(index=True):
     if row.Suite == "SWG/N4W" and f"{row._14}".strip().lower() == "no":
         ids.append(int(row.ID.lstrip("C")))
 
-# for index, lst in enumerate(split_list(ids, 10)):
-for index in range(445, 714):
-    # data["case_ids"] = lst
+for index, lst in enumerate(split_list(ids, 10)):
+    if index < 445:
+        continue
 
-    with open(f"data_{index}.json", "r") as fp:
-        data = json.load(fp)
+    data["case_ids"] = lst
 
     response = client.send_post(f"update_cases/{SUITE_ID}", data=data)
+
+    with open(f"data_{index}.json", "w") as fp:
+        fp.write(json.dumps(data, indent=4))
 
     with open(f"update_cases_{index}.json", "w") as fp:
         fp.write(json.dumps(response, indent=4))
