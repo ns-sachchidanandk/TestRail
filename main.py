@@ -3,8 +3,8 @@ import pandas
 from testrail import *
 
 client = APIClient(base_url="https://netskope.testrail.io/")
-client.user = "sachchidanandk@netskope.com"
-client.password = "jgR5NNVNar@UPEp"
+client.user = "sachchidanandk@netskope.com" # Add your email
+client.password = "****" # Add your password
 
 PROJECT_ID = 34
 SUITE_ID = 921
