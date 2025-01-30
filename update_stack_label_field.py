@@ -1,3 +1,4 @@
+import os
 import json
 
 from typing import List
@@ -28,7 +29,7 @@ def create_test_case_update_data(test_case_data: dict):
 if __name__ == "__main__":
     client = APIClient(base_url="https://netskope.testrail.io/")
     client.user = "sachchidanandk@netskope.com"
-    client.password = "2Ur!$%B7A$@8GivK&"
+    client.password = os.environ.get("TESTRAIL_PASSWORD")
 
     test_case_ids = parse_test_case_ids()
     for id in test_case_ids:
