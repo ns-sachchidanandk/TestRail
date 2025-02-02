@@ -5,7 +5,6 @@ from typing import List
 from testrail import *
 
 
-
 def parse_test_case_ids(file_path: str = "./data/uniq_test_case_ids.txt") -> List:
     test_case_ids: List
     with open(file_path, "r") as fp:
@@ -33,9 +32,11 @@ if __name__ == "__main__":
 
     test_case_ids = parse_test_case_ids()
     for id in test_case_ids:
-        print(f"Updating test case with id: {id}")
         id = int(id.strip())
+        print(f"Updating test case with id: {id}")
         test_case_data = fetch_test_case_data(client, id)
         data = create_test_case_update_data(test_case_data)
         client.send_post(f"update_case/{id}", data=data)
         updated_test_case_data = fetch_test_case_data(client, id)
+        with open(f"test_case_{id}.json", "w") as fp:
+            fp.write(json.dumps(updated_test_case_data, indent=4))
