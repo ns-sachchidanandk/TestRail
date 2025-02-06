@@ -31,12 +31,12 @@ if __name__ == "__main__":
     client.password = os.environ.get("TESTRAIL_PASSWORD")
 
     test_case_ids = parse_test_case_ids()
-    for id in test_case_ids:
-        id = int(id.strip())
-        print(f"Updating test case with id: {id}")
-        test_case_data = fetch_test_case_data(client, id)
+    for test_id in test_case_ids:
+        test_id = int(test_id.strip())
+        print(f"Updating test case with id: {test_id}")
+        test_case_data = fetch_test_case_data(client, test_id)
         data = create_test_case_update_data(test_case_data)
-        client.send_post(f"update_case/{id}", data=data)
-        updated_test_case_data = fetch_test_case_data(client, id)
-        with open(f"test_case_{id}.json", "w") as fp:
+        client.send_post(f"update_case/{test_id}", data=data)
+        updated_test_case_data = fetch_test_case_data(client, test_id)
+        with open(f"test_case_{test_id}.json", "w") as fp:
             fp.write(json.dumps(updated_test_case_data, indent=4))

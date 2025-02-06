@@ -1,0 +1,50 @@
+{
+    "id": 1967661,
+    "title": "- with feature enabled with MITM-\n[ecdsa-secp256r1, ecdsa-secp384r1, rsa3072]\n- using openssl s_client select tls version as tls1_3, cipher as RSA\n- use BYOK CA with RSA3072",
+    "section_id": 139823,
+    "template_id": 1,
+    "type_id": 6,
+    "priority_id": 4,
+    "milestone_id": null,
+    "refs": null,
+    "created_by": 767,
+    "created_on": 1712215637,
+    "updated_by": 729,
+    "updated_on": 1738516542,
+    "estimate": null,
+    "estimate_forecast": null,
+    "suite_id": 921,
+    "display_order": 15,
+    "is_deleted": 0,
+    "case_assignedto_id": 767,
+    "custom_automation_type": 0,
+    "custom_automatable": 1,
+    "custom_automated": 1,
+    "custom_deprecatedtestcase": false,
+    "custom_ui_case": 1,
+    "custom_automation_id": null,
+    "custom_hack_functional_sub_categories": 1,
+    "custom_hack_test_categories": 3,
+    "custom_hack_jira_escalated": false,
+    "custom_appliance_support": 2,
+    "custom_sub_component": 1,
+    "custom_testrail_bdd_scenario": null,
+    "custom_summary": "openssl s_client -connect facebook.com:443 \n-cipher ECDHE-RSA-AES256-GCM-SHA384  -tls1_3\nRepeat the test with tls version as tls1_2",
+    "custom_preconds": null,
+    "custom_steps": null,
+    "custom_expected": "Since the client doesnt support the ec curves in this case\n, MITM should be choosen as RSA3072 which is one of the configured value",
+    "custom_steps_separated": null,
+    "custom_mission": null,
+    "custom_goals": null,
+    "comments": [
+        {
+            "user_id": 767,
+            "comment": "Validate the feature for R115",
+            "created_on": 1712215824
+        }
+    ],
+    "custom_keyword": [],
+    "custom_stack_label": [
+        4
+    ]
+}
